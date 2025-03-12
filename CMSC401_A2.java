@@ -10,7 +10,7 @@ public class CMSC401_A2 {
         int n = sc.nextInt();
         
         // input is N>=2, N<1000000
-        if (n >= 2 && n < 1000000) {
+        if (n >= 2 || n < 1000000) {
             int[] y = new int[n];// first input read as size of y array
             
             // next inputs read into y array

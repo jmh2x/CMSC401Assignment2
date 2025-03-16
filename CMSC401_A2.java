@@ -14,8 +14,8 @@ public class CMSC401_A2 {
             int[] y = new int[n];// first input read as size of y array
             
             // next inputs read into y array
-            for (int i = 0; i < n; i++) {
-                y[i] = sc.nextInt();
+            for (int j = 0; j < n; j++) {
+                y[j] = sc.nextInt();
             }
             
             // median y-coordinate with quickSelect
@@ -29,44 +29,44 @@ public class CMSC401_A2 {
         sc.close();
     }
 
-    // Quickselect algorithm
-    private static int quickSelect(int[] arr, int left, int right, int k) {
-        while (left < right) { //while left bound is less than right bound
+    // Quickselect
+    private static int quickSelect(int[] arr, int leftb, int rightb, int k) {
+        while (leftb < rightb) { //while left bound is less than right bound
             // Partition the array and get the pivot index
-            int pivotIndex = partition(arr, left, right);
+            int pivotInd = partition(arr, leftb, rightb);
             
             // If the pivot index is the k-th element, return it
-            if (k == pivotIndex) {
+            if (k == pivotInd) {
                 return arr[k];
             } 
             // If k is less than the pivot index, search in the left part
-            else if (k < pivotIndex) {
-                right = pivotIndex - 1;
+            else if (k < pivotInd) {
+                rightb = pivotInd - 1;
             } 
             // If k is greater than the pivot index, search in the right part
             else {
-                left = pivotIndex + 1;
+                leftb = pivotInd + 1;
             }
         }
-        // Return the k-th element
-        return arr[left];
+    
+        return arr[leftb];
     }
 
     // Partition
-    private static int partition(int[] arr, int left, int right) {
-        int pivot = arr[right];
-        int i = left - 1;
+    private static int partition(int[] arr, int leftb, int rightb) {
+        int piv = arr[rightb];
+        int i = leftb - 1;
         
         // Move elements less than or equal to the pivot to the left
-        for (int j = left; j < right; j++) {
-            if (arr[j] <= pivot) {
+        for (int j = leftb; j < rightb; j++) {
+            if (arr[j] <= piv) {
                 i++;
                 swap(arr, i, j);
             }
         }
         
         // swap pivot to correct position
-        swap(arr, i + 1, right);
+        swap(arr, i + 1, rightb);
         return i + 1;
     }
 
